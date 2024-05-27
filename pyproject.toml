@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "skynet"
+version = "0.1.0"
+description = "A generative graph model for GNN benchmarking"
+authors = ["Raúl Higueras <raulhigueras00@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+networkx = "^3.3"
+numpy = "^1.26.4"
+scipy = "^1.13.0"
+pandas = "^2.2.2"
+click = "^8.1.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[project.urls]
+Homepage = "https://example.com"
+Documentation = "https://readthedocs.org"
+Repository = "https://github.com/me/spam.git"
+"Bug Tracker" = "https://github.com/me/spam/issues"
+Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
+
+[tool.poetry.scripts]
+skynet = "skynet.cli:cli"
+
+[tool.black]
+line-length = 99
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = "True"
+force_grid_wrap = 0
+use_parentheses = "True"
+line_length = 99
