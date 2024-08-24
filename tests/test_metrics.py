@@ -60,7 +60,7 @@ def test_feature_distribution_metrics_1(graph_1):
 def test_mixing_matrix_metrics(graph_1):
     metrics = compute_mixing_matrix_metrics(graph_1)
 
-    assert metrics["homophility"] == 0.375
+    assert metrics["homophily"] == 0.375
     assert "self_affinity_imbalance_ratio" in metrics
     assert "interclass_affinity_imbalance_ratio" in metrics
     assert "dist_affinity_mean" in metrics

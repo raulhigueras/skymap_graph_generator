@@ -2,7 +2,7 @@
 name = "skymap"
 version = "0.1.0"
 description = "A generative graph model for GNN benchmarking"
-authors = ["Raúl Higueras <raulhigueras00@gmail.com>"]
+authors = ["Raúl Higueras <raulhigueras00@gmail.com>", "Axel Wassington <axel.tomas.wassington@upc.edu>"]
 license = "MIT"
 readme = "README.md"
 
@@ -15,6 +15,7 @@ pandas = "^2.2.2"
 click = "^8.1.7"
 
 
+matplotlib = "^3.9.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

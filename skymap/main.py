@@ -80,14 +80,14 @@ class SkyMap:
              
         metrics_objective = [metrics.dist_x_mean, metrics.dist_y_mean, metrics.dist_affinity_mean]
         diag = imbalance_distribution(metrics.num_classes, metrics.self_affinity_imbalance_ratio) 
-        diag = metrics.homophility * (diag / sum(diag))
+        diag = metrics.homophily * (diag / sum(diag))
 
         X = np.zeros((metrics.num_classes, metrics.num_classes), float)
         np.fill_diagonal(X, diag)
         idx=np.flip(np.argsort(np.diag(X)))
         X = X[idx,:][:,idx]
 
-        other = imbalance_distribution((metrics.num_classes - 1) * metrics.num_classes / 2, metrics.interclass_affinity_imbalance_ratio) * (1 - metrics.homophility)
+        other = imbalance_distribution((metrics.num_classes - 1) * metrics.num_classes / 2, metrics.interclass_affinity_imbalance_ratio) * (1 - metrics.homophily)
         dist  = math.inf
         for i in range(max_num_iters):
 

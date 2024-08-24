@@ -197,7 +197,7 @@ def compute_mixing_matrix_metrics(g: nx.Graph) -> dict[str, float]:
     self_affinity_list = np.array(self_affinity_list)
     interclass_affinity_list = np.array(interclass_affinity_list)
 
-    homophility = sum(self_affinity_list)
+    homophily = sum(self_affinity_list)
     self_affinity_list_norm = self_affinity_list / sum(self_affinity_list)
     self_affinity_imbalance_ratio = imb_distr_fit_likelihood(self_affinity_list_norm)
     interclass_affinity_list_norm = interclass_affinity_list / sum(interclass_affinity_list)
@@ -208,7 +208,6 @@ def compute_mixing_matrix_metrics(g: nx.Graph) -> dict[str, float]:
     dist_y_list = [0] * (num_classes - 1)
     for c1 in range(num_classes):
             for c2 in range(c1 + 1, num_classes):
-                    print(c1, c2, mixing_matrix[c1,c2])
                     dist_affinity_array[c2-c1] += mixing_matrix[c1,c2]
                     dist_x_list[c1] += mixing_matrix[c1,c2]
                     dist_y_list[c2-1] += mixing_matrix[c1,c2]
@@ -233,7 +232,7 @@ def compute_mixing_matrix_metrics(g: nx.Graph) -> dict[str, float]:
 
     return dict(
         num_classes=num_classes, 
-        homophility=homophility, 
+        homophily=homophily, 
         self_affinity_imbalance_ratio=self_affinity_imbalance_ratio, 
         interclass_affinity_imbalance_ratio=interclass_affinity_imbalance_ratio,
         dist_affinity_mean=dist_affinity_mean, 
@@ -260,7 +259,7 @@ class SkyMapMetrics:
     dist_affinity_mean: float
     self_affinity_imbalance_ratio: float
     interclass_affinity_imbalance_ratio: float
-    homophility: float
+    homophily: float
     
     # Feature distribution metrics
     num_features: float
