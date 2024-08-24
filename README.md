@@ -63,7 +63,7 @@ input_graph: nx.Graph = (...) # <- your graph here as a networkx Graph
 gen_graph: nx.Graph = skymap.mimic_graph(input_graph, num_nodes=1000)
 ```
 
-A more comprehensive guide of how to use the python library to generate graphs can be found in [Examples](examples/use_skynet.ipynb)
+A more comprehensive guide of how to use the python library to generate graphs can be found in [Examples](examples/using_skymap.ipynb)
 
 <!--
 ## Graph Dataset Generation
