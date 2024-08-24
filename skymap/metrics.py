@@ -9,9 +9,9 @@ from networkx.algorithms.approximation.clustering_coefficient import (
 )
 from networkx.algorithms.cluster import average_clustering
 from scipy.sparse.linalg import eigsh
-from skynet.utils import moments_joint_prob, imb_distr_fit, get_mixing_matrix, imb_distr_fit_likelihood
+from skymap.utils import moments_joint_prob, imb_distr_fit, get_mixing_matrix, imb_distr_fit_likelihood
 
-from skynet.utils import fit_degree_distribution
+from skymap.utils import fit_degree_distribution
 
 MAX_NUM_NODES_CLUSTERING_APPROX = 10_000
 MAX_CLUSTER_COEFF_TRIALS = 1_000
@@ -244,7 +244,7 @@ def compute_mixing_matrix_metrics(g: nx.Graph) -> dict[str, float]:
 
 
 @dataclass
-class SkyNetMetrics:
+class SkyMapMetrics:
     num_nodes: int
     density: float
     

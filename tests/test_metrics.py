@@ -1,7 +1,7 @@
 import networkx as nx
 import pytest
 
-from skynet.metrics import *
+from skymap.metrics import *
 
 
 def float_equal(num1: float, num2: float, precision: float = 1e-3):
@@ -68,7 +68,7 @@ def test_mixing_matrix_metrics(graph_1):
     assert "dist_x_mean" in metrics
     assert "dist_y_mean" in metrics
 
-def test_skynet_metrics_from_graph(graph_1):
-    metrics = SkyNetMetrics.from_graph(graph_1)
-    assert isinstance(metrics, SkyNetMetrics)
+def test_skymap_metrics_from_graph(graph_1):
+    metrics = SkyMapMetrics.from_graph(graph_1)
+    assert isinstance(metrics, SkyMapMetrics)
     assert metrics.num_nodes == 5

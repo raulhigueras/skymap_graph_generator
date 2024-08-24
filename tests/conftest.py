@@ -1,6 +1,6 @@
 import networkx as nx
 import pytest
-from skynet.metrics import SkyNetMetrics
+from skymap.metrics import SkyMapMetrics
 
 @pytest.fixture
 def graph_1():
@@ -21,7 +21,7 @@ def graph_1():
 
 @pytest.fixture()
 def metrics_1():
-    return SkyNetMetrics(
+    return SkyMapMetrics(
         num_nodes=100,
         density=0.2,
         class_imbalance_ratio=0.5,

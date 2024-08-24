@@ -1,8 +1,8 @@
 import click
 from pathlib import Path
 import networkx as nx
-from skynet import SkyNet
-from skynet.constants import banner
+from skymap import SkyMap
+from skymap.constants import banner
 
 @click.group()
 def cli():
@@ -27,6 +27,7 @@ def cli():
     "-n",
     "--num_nodes",
     "num_nodes",
+    type=int,
     required=False,
     default=None
 )
@@ -36,15 +37,15 @@ def mimic_graph(graph, output, num_nodes = None):
     if output_path.is_file():
         output_path.parent.mkdir(exist_ok=True)
     else:
-        output_path = output_path / "skynet_graph.gml"
+        output_path = output_path / "skymap_graph.gml"
     
     match graph_path.suffix:
         case ".gml":
             graph = nx.read_gml(graph_path)
         case _:
             raise AttributeError("Only .gml supported") 
-    skynet = SkyNet()
-    generated_graph = skynet.mimic_graph(graph, num_nodes)
+    skymap = SkyMap()
+    generated_graph = skymap.mimic_graph(graph, num_nodes)
     nx.write_gml(generated_graph, output_path)
     
 if __name__ == '__main__':

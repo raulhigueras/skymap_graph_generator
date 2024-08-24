@@ -1,8 +1,8 @@
 import networkx as nx
 
-from skynet.metrics import SkyNetMetrics
+from skymap.metrics import SkyMapMetrics
 from typing import Literal
-from skynet.utils import imbalance_distribution, distance, pmf_discrete_log_logistic, gen_beta_moments, pmf_disc_beta
+from skymap.utils import imbalance_distribution, distance, pmf_discrete_log_logistic, gen_beta_moments, pmf_disc_beta
 import numpy as np
 import random
 import math
@@ -11,7 +11,7 @@ import functools as ft
 import pandas as pd
 
 
-class SkyNet:
+class SkyMap:
 
     def __init__(
         self, 
@@ -20,12 +20,12 @@ class SkyNet:
         self.subgraphs_gen_method = subgraphs_gen_method
 
     def mimic_graph(self, g: nx.Graph, num_nodes: int = None) -> nx.Graph:
-        metrics = SkyNetMetrics.from_graph(g)
+        metrics = SkyMapMetrics.from_graph(g)
         if num_nodes is not None:
             metrics.num_nodes = num_nodes
         return self.generate_graph(metrics)
     
-    def generate_random_subgraphs(self, metrics: SkyNetMetrics, mixing_matrix: np.ndarray) -> list[nx.Graph]:
+    def generate_random_subgraphs(self, metrics: SkyMapMetrics, mixing_matrix: np.ndarray) -> list[nx.Graph]:
         
         nodes_per_class = imbalance_distribution(metrics.num_classes, metrics.class_imbalance_ratio)
         nodes_per_class = nodes_per_class[::-1]
@@ -41,7 +41,7 @@ class SkyNet:
             
         return subgraphs
     
-    def search_subgraphs(self, metrics: SkyNetMetrics, mixing_matrix: np.ndarray) -> list[nx.Graph]: 
+    def search_subgraphs(self, metrics: SkyMapMetrics, mixing_matrix: np.ndarray) -> list[nx.Graph]: 
         
         nodes_per_class = imbalance_distribution(metrics.num_classes, metrics.class_imbalance_ratio)
         nodes_per_class = nodes_per_class[::-1]
@@ -73,7 +73,7 @@ class SkyNet:
 
     def reconstruct_mixing_matrix(
         self, 
-        metrics: SkyNetMetrics, 
+        metrics: SkyMapMetrics, 
         make_symmetric: bool = True,
         max_num_iters: int = 10_000
     ) -> np.ndarray:   
@@ -150,7 +150,7 @@ class SkyNet:
     def assign_properties(
         self, 
         graph: nx.Graph, 
-        metrics: SkyNetMetrics,
+        metrics: SkyMapMetrics,
         rho_mean: float = None,
         rho_var: float = None
         ) -> nx.Graph:
@@ -204,7 +204,7 @@ class SkyNet:
         return H
     
 
-    def add_inter_edges(self, graph: nx.Graph, metrics: SkyNetMetrics, mixing_matrix: np.ndarray) -> nx.Graph:
+    def add_inter_edges(self, graph: nx.Graph, metrics: SkyMapMetrics, mixing_matrix: np.ndarray) -> nx.Graph:
         node_data = pd.DataFrame.from_dict([{"node": i[0], "y": i[1]['y'] } for i in  graph.nodes.items()])
         deg_data = pd.DataFrame.from_dict([{"node": d[0], "k": d[1] } for d in  graph.degree()])
         deg_node_data = pd.merge(node_data, deg_data, on="node")
@@ -253,7 +253,7 @@ class SkyNet:
         return graph
 
 
-    def generate_graph(self, metrics: SkyNetMetrics) -> nx.Graph:
+    def generate_graph(self, metrics: SkyMapMetrics) -> nx.Graph:
         
         # Reconstruct Mixing Matrix
         mixing_matrix = self.reconstruct_mixing_matrix(metrics)

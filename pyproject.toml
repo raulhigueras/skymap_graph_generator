@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "skynet"
+name = "skymap"
 version = "0.1.0"
 description = "A generative graph model for GNN benchmarking"
 authors = ["Raúl Higueras <raulhigueras00@gmail.com>"]
@@ -28,7 +28,7 @@ Repository = "https://github.com/me/spam.git"
 Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
 
 [tool.poetry.scripts]
-skynet = "skynet.cli:cli"
+skymap = "skymap.cli:cli"
 
 [tool.black]
 line-length = 99
