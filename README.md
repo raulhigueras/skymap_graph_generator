@@ -57,7 +57,7 @@ Note: if no number of nodes is provided, the number of nodes of the input graph 
 Another way of generating graphs is directly using the project as a library:
 
 ```{python}
-from sjymap import SkyMap
+from skymap import SkyMap
 import networkx as nx
 
 skymap = SkyMap()
@@ -69,6 +69,16 @@ A more comprehensive guide of how to use the python library to generate graphs c
 
 ## Cite this work
 > Wassington A, Higueras R and Abadal S (2024) SkyMap: a generative graph model for GNN benchmarking. Front. Artif. Intell. 7:1427534. doi: 10.3389/frai.2024.1427534
+
+```
+@article{wassington7skymap,
+  title={SkyMap: A Generative Graph Model for GNN Benchmarking},
+  author={Wassington, Axel and Higueras, Raul and Abadal, Sergi},
+  journal={Frontiers in Artificial Intelligence},
+  volume={7},
+  publisher={Frontiers}
+}
+```
 
 <!--
 ## Graph Dataset Generation
