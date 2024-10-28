@@ -13,6 +13,8 @@ SkyMap is a generative graph model designed for GNN benchmarking with two main u
 
 This document explains how to install and the basic usage of SkyMap. For a more comprehensive and detailed explanation of the features, please check the [examples](examples)
 
+> 📖: The paper related to this work has been provisionally accepted in Frontiers in Artificial Inelligence: [SkyMap: A Generative Graph Model for GNN Benchmarking](https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2024.1427534/abstract).
+
 ## Installation
 
 To install skymap using [pip](https://pypi.org):
@@ -42,10 +44,10 @@ SkyMap can be used to imitate graphs. This is, to generate graphs with similar c
 
 ### Command-line Interface (CLI)
 
-SkyNet offers directly a CLI to use the generator. The input graph must be in [.gml](https://en.wikipedia.org/wiki/Graph_Modelling_Language) format.
+SjyMap offers directly a CLI to use the generator. The input graph must be in [.gml](https://en.wikipedia.org/wiki/Graph_Modelling_Language) format.
 
 ```{bash}
-skynet mimic-graph -g <path to input graph (.gml)> -o <output directory> -n <number of nodes (optional)>
+skymap mimic-graph -g <path to input graph (.gml)> -o <output directory> -n <number of nodes (optional)>
 ```
 
 Note: if no number of nodes is provided, the number of nodes of the input graph will be used.
@@ -64,6 +66,9 @@ gen_graph: nx.Graph = skymap.mimic_graph(input_graph, num_nodes=1000)
 ```
 
 A more comprehensive guide of how to use the python library to generate graphs can be found in [Examples](examples/using_skymap.ipynb)
+
+## Cite this work
+> Wassington A, Higueras R and Abadal S (2024) SkyMap: a generative graph model for GNN benchmarking. Front. Artif. Intell. 7:1427534. doi: 10.3389/frai.2024.1427534
 
 <!--
 ## Graph Dataset Generation
@@ -94,7 +99,7 @@ The possible values of distributions are: `uniform` (default), `2^`, `10^`, `10^
 The CLI command for the dataset generation looks like this:
 
 ```{bash}
-skynet generate-dataset -p <path to dump graphs> -s <dataset specification file> -n <number of graphs>
+skymap generate-dataset -p <path to dump graphs> -s <dataset specification file> -n <number of graphs>
 ```
 
 ### Python Library
